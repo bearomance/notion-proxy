@@ -2,7 +2,7 @@ module.exports = async (req, res) => {
   // 设置 CORS 头
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Notion-Version, Authorization'
@@ -15,9 +15,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // 从请求中获取目标 Notion API 路径
-    const notionPath = req.url.replace('/api/notion', '');
-    const notionApiUrl = `https://api.notion.com/v1${notionPath}`;
+    const notionApiUrl = `https://api.notion.com${req.url}`;
 
     // 转发请求到 Notion API
     const response = await fetch(notionApiUrl, {
