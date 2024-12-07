@@ -1,0 +1,12 @@
+{
+  "name": "notion-api-proxy",
+  "version": "1.0.0",
+  "description": "Notion API 代理服务",
+  "main": "api/notion.js",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14"
+  },
+  "scripts": {
+    "dev": "vercel dev"
+  }
+} 
